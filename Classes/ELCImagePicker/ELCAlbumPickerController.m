@@ -5,6 +5,7 @@
 //  Copyright 2011 ELC Technologies. All rights reserved.
 //
 
+#import "Utils.h"
 #import "ELCAlbumPickerController.h"
 #import "ELCImagePickerController.h"
 #import "ELCAssetTablePicker.h"
@@ -71,11 +72,11 @@
               
                 if ([ALAssetsLibrary authorizationStatus] == ALAuthorizationStatusDenied) {
                     NSString *errorMessage = NSLocalizedString(@"This app does not have access to your photos or videos. You can enable access in Privacy Settings.", nil);
-                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Access Denied", nil) message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil] show];
+                    [Utils showAlertWithTitle:NSLocalizedString(@"Access Denied", nil) message:errorMessage buttonTitle:NSLocalizedString(@"Ok", nil)];
                   
                 } else {
                     NSString *errorMessage = [NSString stringWithFormat:@"Album Error: %@ - %@", [error localizedDescription], [error localizedRecoverySuggestion]];
-                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", nil) otherButtonTitles:nil] show];
+                    [Utils showAlertWithTitle:NSLocalizedString(@"Error", nil) message:errorMessage buttonTitle:NSLocalizedString(@"Ok", nil)];
                 }
 
                 [self.navigationItem setTitle:nil];
